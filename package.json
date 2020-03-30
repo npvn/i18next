@@ -1,5 +1,5 @@
 {
-  "name": "i18next",
+  "name": "i18next-maestroqa",
   "version": "19.3.4",
   "description": "i18next internationalization framework",
   "main": "./dist/cjs/i18next.js",
@@ -19,7 +19,7 @@
   "bugs": "https://github.com/i18next/i18next/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/i18next/i18next.git"
+    "url": "https://github.com/npvn/i18next.git"
   },
   "dependencies": {
     "@babel/runtime": "^7.3.1"
