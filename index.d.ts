@@ -1010,6 +1010,11 @@ export interface i18n {
   addResources(lng: string, ns: string, resources: any): void;
 
   /**
+   * Adds multiple key/values to be loaded after initialization
+   */
+  addResourcesToQueue(lng: string, ns: string, resources: any): void;
+
+  /**
    * Adds a complete bundle.
    * Setting deep param to true will extend existing translations in that file.
    * Setting overwrite to true it will overwrite existing translations in that file.

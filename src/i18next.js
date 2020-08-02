@@ -23,6 +23,15 @@ class I18n extends EventEmitter {
     this.services = {};
     this.logger = baseLogger;
     this.modules = { external: [] };
+    this.queuedResources = [];
+
+    // Load resources added before initialization
+    this.on('initialized', () => {
+      this.queuedResources.forEach(({ lng, ns, resources }) =>
+        this.addResources(lng, ns, resources)
+      );
+      this.queuedResources = [];
+    });
 
     if (callback && !this.isInitialized && !options.isClone) {
       // https://github.com/i18next/i18next/issues/879
@@ -160,6 +169,12 @@ class I18n extends EventEmitter {
 
     return deferred;
   }
+
+  // Allow adding resources when i18next hasn't been initialized. Queued resources
+  // will be loaded when initialization completes.
+  addResourcesToQueue(lng, ns, resources) {
+    this.queuedResources.push({ lng, ns, resources });
+  }  
 
   /* eslint consistent-return: 0 */
   loadResources(language, callback = noop) {
